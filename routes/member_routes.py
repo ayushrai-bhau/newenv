@@ -65,7 +65,7 @@ async def add_member(member: Member):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
     
 
-# PUT /members/{memberId} - Update details of a member
+# PUT /members/{memberId} 
 @router.put("/{memberId}", response_model=str, status_code=status.HTTP_200_OK)
 async def update_member(memberId: str, member: Member):
     """
@@ -90,7 +90,7 @@ async def update_member(memberId: str, member: Member):
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
-# DELETE /members/{memberId} - Remove a member
+# DELETE /members/{memberId} -
 @router.delete("/{memberId}", status_code=status.HTTP_204_NO_CONTENT)
 async def remove_member(memberId: str):
     """

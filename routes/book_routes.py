@@ -18,11 +18,11 @@ async def list_books():
         list[Book]: A list of books.
     """
     print("/////////")
-    books = list(books_collection.find({}))  # Include _id in the result
+    books = list(books_collection.find({}))  
     return [{"id": str(book["_id"]), **book} for book in books]
 
 
-# GET /books/{bookId} - Get details of a specific book
+# GET /books/{bookId} 
 @router.get("/{bookId}", response_model=Book, status_code=status.HTTP_200_OK)
 async def get_book(bookId: str):
     """
@@ -47,7 +47,7 @@ async def get_book(bookId: str):
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
-# POST /books - Add a new book
+# POST /books 
 index_model = IndexModel([("id", ASCENDING)], unique=True)
 books_collection.create_indexes([index_model])
 
@@ -69,7 +69,7 @@ async def add_book(book: Book):
         result = books_collection.insert_one(book.dict(by_alias=True))
         return f"Book with ID {result.inserted_id} created successfully"
     except Exception as e:
-        # Check if the error is due to a duplicate key violation
+        
         if "E11000" in str(e):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Book with the same ID or title already exists")
         else:
@@ -77,7 +77,7 @@ async def add_book(book: Book):
 
 
 
-# PUT /books/{bookId} - Update details of a book
+# PUT /books/{bookId} 
 @router.put("/{bookId}", response_model=str, status_code=status.HTTP_200_OK)
 async def update_book(bookId: str, book: Book):
     """
