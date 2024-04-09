@@ -9,7 +9,7 @@ To get started with this API, follow these steps:
  Clone the repository:
 
    ```bash
-   git clone https://github.com/ayushrai-bhau/newenv/tree/main
+   git clone https://github.com/ayushrai-bhau/newenv.git
 ```
 
 Install dependencies:
