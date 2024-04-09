@@ -21,6 +21,6 @@ Install dependencies:
 
 For detailed documentation of all available endpoints and their request/response formats, access the API documentation at 
    ```bash
- https://newenv.onrender.com/docs.
+ https://newenv.onrender.com/docs
 
 ```
